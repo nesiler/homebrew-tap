@@ -1,8 +1,8 @@
 class Otag < Formula
   desc "Coordinate AI coding agents (Claude Code, Codex, OpenCode) through tmux"
   homepage "https://github.com/nesiler/otag"
-  url "https://github.com/nesiler/otag/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "0279fcfc095c24401a99a84aabd304869b95774c8fb3222fc03806e7a093f64f"
+  url "https://github.com/nesiler/otag/archive/refs/tags/v0.1.1.tar.gz"
+  sha256 "d58e676c55fe42e28a2406d1dfb7fb72f4a68a9239e6caf8218e2f81eb09fea1"
   license "MIT"
   head "https://github.com/nesiler/otag.git", branch: "main"
 
@@ -11,10 +11,10 @@ class Otag < Formula
   depends_on "tmux"
 
   def install
+    # std_go_args already adds -s -w.
     ldflags = %W[
-      -s -w
       -X main.version=#{version}
-      -X main.commit=21099aa1fdc56717f2564b7e5aa8ce823920d858
+      -X main.commit=bdf9ba3eebe996ec4762aa95bce8934465a161f5
       -X main.date=#{time.iso8601}
     ]
     system "go", "build", *std_go_args(ldflags:), "./cmd/otag"
@@ -22,9 +22,8 @@ class Otag < Formula
 
   def caveats
     <<~EOS
-      Start the background daemon (launchd) and check your setup:
-        otag daemon install
-        otag doctor
+      Run `otag` to get started: a short wizard sets up your agents and a project,
+      and can install the background daemon (launchd; `otag daemon install`).
     EOS
   end
 
