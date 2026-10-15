@@ -1,8 +1,8 @@
 class Otag < Formula
   desc "Coordinate AI coding agents (Claude Code, Codex, OpenCode) through tmux"
   homepage "https://github.com/nesiler/otag"
-  url "https://github.com/nesiler/otag/archive/refs/tags/v0.1.1.tar.gz"
-  sha256 "d58e676c55fe42e28a2406d1dfb7fb72f4a68a9239e6caf8218e2f81eb09fea1"
+  url "https://github.com/nesiler/otag/archive/refs/tags/v0.1.2.tar.gz"
+  sha256 "37d221e6170570abd2173ce6f86c22ac05e72d8ba141ee1f22369b5290ca5c0b"
   license "MIT"
   head "https://github.com/nesiler/otag.git", branch: "main"
 
@@ -14,7 +14,7 @@ class Otag < Formula
     # std_go_args already adds -s -w.
     ldflags = %W[
       -X main.version=#{version}
-      -X main.commit=bdf9ba3eebe996ec4762aa95bce8934465a161f5
+      -X main.commit=17bac9cf1f4472d976ef2f5c4fc2e866f286fb4a
       -X main.date=#{time.iso8601}
     ]
     system "go", "build", *std_go_args(ldflags:), "./cmd/otag"
