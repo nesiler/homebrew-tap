@@ -6,6 +6,8 @@ class Otag < Formula
   license "MIT"
   head "https://github.com/nesiler/otag.git", branch: "main"
 
+  deprecate! date: "2026-10-19", because: :repo_archived
+
   depends_on "go" => :build
   depends_on :macos
   depends_on "tmux"
